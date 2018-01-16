@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="authcode" />
+        <module name="business" />
+        <module name="car" />
+        <module name="coach" />
+        <module name="common" />
+        <module name="datasynch" />
+        <module name="finance" />
+        <module name="flow" />
+        <module name="httpaccess" />
+        <module name="intapi" />
+        <module name="logcommon" />
+        <module name="market" />
+        <module name="report" />
+        <module name="student" />
+        <module name="supplier" />
+        <module name="system" />
+        <module name="trainorg" />
+        <module name="user" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="authcode" target="1.5" />
+      <module name="business" target="1.5" />
+      <module name="car" target="1.5" />
+      <module name="coach" target="1.5" />
+      <module name="common" target="1.5" />
+      <module name="datasynch" target="1.5" />
+      <module name="finance" target="1.5" />
+      <module name="flow" target="1.5" />
+      <module name="httpaccess" target="1.5" />
+      <module name="intapi" target="1.5" />
+      <module name="liliyun" target="1.5" />
+      <module name="logcommon" target="1.5" />
+      <module name="market" target="1.5" />
+      <module name="report" target="1.5" />
+      <module name="student" target="1.5" />
+      <module name="supplier" target="1.7" />
+      <module name="system" target="1.5" />
+      <module name="trainorg" target="1.5" />
+      <module name="user" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <title>供应商系统</title>
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"/>
+    <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title">预订单信息</h1>
+        <a href="/view/addPreOrder" class="button pull-right">添加预订单</a>
+    </header>
+    <div class="content" style="margin-bottom: 30px;">
+        <div class="buttons-tab">
+            <a href="#tab1" class="tab-link button">未回料</a>
+            <a href="#tab2" class="tab-link button active">已回料</a>
+        </div>
+        <div class="content-block" style="padding: 0 0rem">
+            <div class="tabs">
+                <div id="tab1" class="tab">
+                    <form action="/view/preOrder" style="margin-top: -20px">
+                        <div class="row" style="margin-left: .1rem; margin-right: .5rem">
+                            <div class="search-input col-80">
+                                <label for="search"></label>
+                                <input type="search" id="search" name="search" placeholder="输入款号" th:value="${search}"/>
+                            </div>
+                            <button class="button button-fill button-primary col-20">搜索</button>
+                        </div>
+                    </form>
+                    <div class="list-block cards-list" style="margin-top: -8px;">
+                        <ul>
+                            <li class="card" th:each="item : ${list}" style="font-size: .75rem">
+
+                                <div class="card-footer">
+                                    <div class="item-media">
+                                        <a th:onclick="'javascript:finish(\''+${item.id}+'\')'">
+                                            <img th:src="${item.imgs}"
+                                                 style='width: 4.4rem;'/>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a th:href="@{/view/preOrderToOrder(id=${item.id})}">
+                                            <div th:style="${item.isToday == 1} ? 'color:red' : ''">
+                                                <div>
+                                                    款号:<label th:text="${item.style}"></label>
+                                                    颜色:<label th:text="${item.color}"></label>
+                                                    品牌:<label th:text="${item.brand}"></label>
+                                                </div>
+                                                <div>
+                                                    日期:<label th:text="${item.ctime}"></label>
+                                                    数量:<label th:text="${item.num}"></label>
+                                                </div>
+                                                <div>
+                                                    回料日期:<label th:text="${item.backDate}"></label>
+                                                    回料数量:<label th:text="${item.backNum}"></label>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="tab2" class="tab active">
+                    <form action="/view/preOrder1" style="margin-top: -20px">
+                        <div class="row" style="margin-left: .1rem; margin-right: .5rem">
+                            <div class="search-input col-80">
+                                <label for="search"></label>
+                                <input type="search" id="search" name="search" placeholder="输入款号" th:value="${search}"/>
+                            </div>
+                            <button class="button button-fill button-primary col-20">搜索</button>
+                        </div>
+                    </form>
+                    <div class="list-block cards-list" style="margin-top: -8px; font-size: 14">
+                        <ul>
+                            <li class="card" th:each="item : ${list1}" style="font-size: .75rem">
+                                <div class="card-footer">
+                                    <div class="item-media">
+                                        <img th:src="${item.imgs}"
+                                             style='width: 4.4rem;'>
+                                    </div>
+                                    <div>
+                                        <a th:href="@{/view/preOrderToOrder(preOrderId=${item.id})}">
+                                            <div th:style="${item.isToday == 1} ? 'color:red' : ''">
+                                                <div>
+                                                    款号:<label th:text="${item.style}"></label>
+                                                    颜色:<label th:text="${item.color}"></label>
+                                                    品牌:<label th:text="${item.brand}"></label>
+                                                </div>
+                                                <div>
+                                                    日期:<label th:text="${item.ctime}"></label>
+                                                    数量:<label th:text="${item.num}"></label>
+                                                </div>
+                                                <div th:each="detail: ${item.details}">
+                                                    回料日期:<label th:text="${detail.backDate}"></label>
+                                                    回料数量:<label th:text="${detail.backNum}"></label>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <nav class="bar bar-tab">
+        <a class="tab-item" href="/view/supplier">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">供应商</span>
+        </a>
+        <a class="tab-item active" href="/view/preOrder">
+            <span class="icon icon-card"></span>
+            <span class="tab-label">预订单</span>
+        </a>
+        <a class="tab-item" href="/view/record">
+            <span class="icon icon-message"></span>
+            <span class="tab-label">今日备注</span>
+        </a>
+        <a class="tab-item" href="/view/search">
+            <span class="icon icon-search"></span>
+            <span class="tab-label">搜索</span>
+        </a>
+        <a class="tab-item" href="/view/config">
+            <span class="icon icon-computer"></span>
+            <span class="tab-label">系统配置</span>
+        </a>
+    </nav>
+
+</div>
+</body>
+<script th:inline="javascript">
+    function finish(id) {
+        if (confirm("确定回料?")) {
+            $.post("/setFinish", {id: id},
+                function (data) {
+                    window.location.href = "/view/preOrder";
+                });
+        }
+    }
+</script>
+</html>

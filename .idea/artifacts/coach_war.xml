@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="coach:war">
+    <output-path>$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/coach/target</output-path>
+    <root id="archive" name="coach.war">
+      <element id="artifact" artifact-name="coach:war exploded" />
+    </root>
+  </artifact>
+</component>

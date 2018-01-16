@@ -1,0 +1,145 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <title>供应商系统</title>
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"/>
+    <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <a th:href="@{/view/supplierOrder(name=${name},supplierId=${supplierId})}" class="button pull-left">返回</a>
+        <a class="button pull-left" onclick="deleteData()">删除</a>
+        <h1 class="title" th:text="${name}"></h1>
+        <a th:href="@{/view/addRecord(orderId=${orderId},batchId=${batchId},name=${name},supplierId=${supplierId},style=${style})}" class="button pull-right">备注</a>
+    </header>
+    <div class="content">
+        <div class="content-block">
+            <div class="list-block contacts-block" style="margin-top: -5px">
+                <div class="list-group">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <span class="item-title">款号</span>
+                                    |
+                                    <div class="item-title">时间</div>
+                                    |
+                                    <div class="item-title">颜色</div>
+                                    |
+                                    <div class="item-title">尺码</div>
+                                    |
+                                    <div class="item-title">单价</div>
+                                    |
+                                    <div class="item-title">裁数</div>
+                                    |
+                                    <div class="item-title">已交</div>
+                                    |
+                                    <div class="item-title">未交</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li th:each="item : ${list}">
+                            <a th:href="@{/view/orderDetail(supplierId=${item.supplierId},orderId=${item.id},
+                            style=${item.style},color=${item.color},size=${item.size})}">
+                                <div class="item-content item-link">
+                                    <div class="item-inner">
+                                        <span class="item-title" th:text="${item.style}"></span>
+                                        |
+                                        <span class="item-title" th:text="${item.orderDate}"></span>
+                                        |
+                                        <div class="item-title" th:text="${item.color}"></div>
+                                        |
+                                        <div class="item-title" th:text="${item.size}"></div>
+                                        |
+                                        <div class="item-title" th:text="${item.price}"></div>
+                                        |
+                                        <div class="item-title" th:text="${item.outCount}"></div>
+                                        |
+                                        <div class="item-title" th:text="${item.finishCount}"></div>
+                                        |
+                                        <div class="item-title" th:text="${item.unfinishCount}"></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content-block" style="margin-bottom: 60px;">
+            <div class="list-block contacts-block" style="margin-top: -5px;">
+                <div class="list-group">
+                    <ul>
+                        <!--<li>-->
+                            <!--<div class="item-content">-->
+                                <!--<div class="item-inner">-->
+                                    <!--<div class="item-title">时间</div>-->
+                                    <!--<div class="item-title">备注信息</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <li th:each="item : ${reclist}">
+                                <div class="item-content">
+                                    <div style="width: 95%;margin-top: 5px;">
+                                        <span>跟踪日期：</span><span class="item-title" th:text="${item.deliveryDate}"></span>
+                                        <a class="button pull-right" th:onclick="'javascript:deleteRecord(\''+${item.id}+'\')'">删除</a><br/>
+                                        <span>备注：</span><span class="item-title" th:text="${item.content}"></span>
+                                    </div>
+                                </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bar bar-tab">
+        <a class="tab-item active" href="/view/supplier">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">供应商</span>
+        </a>
+        <a class="tab-item" href="/view/preOrder">
+            <span class="icon icon-card"></span>
+            <span class="tab-label">预订单</span>
+        </a>
+        <a class="tab-item" href="/view/record">
+            <span class="icon icon-message"></span>
+            <span class="tab-label">今日备注</span>
+        </a>
+        <a class="tab-item" href="/view/search">
+            <span class="icon icon-search"></span>
+            <span class="tab-label">搜索</span>
+        </a>
+        <a class="tab-item" href="/view/config">
+            <span class="icon icon-computer"></span>
+            <span class="tab-label">系统配置</span>
+        </a>
+    </nav>
+</div>
+</body>
+<script th:inline="javascript">
+    function deleteData() {
+        if (confirm("确定删除当前所有订单?")) {
+            $.post("/deleteOrderBatch", {batchId : [[${batchId}]]},
+                function(data) {
+                    window.location.href = "/view/supplierOrder?supplierId=" + [[${supplierId}]] + "&name=" + [[${name}]];
+                });
+        }
+    }
+
+    function deleteRecord(id) {
+        if (confirm("确定删除当前备注?")) {
+            $.post("/deleteRecord", {id : id},
+                function(data) {
+                    window.location.href = "/view/orderList?supplierId=" + [[${supplierId}]] + "&name=" + [[${name}]] + "&batchId=" + [[${batchId}]];
+                });
+        }
+    }
+</script>
+</html>

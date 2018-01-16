@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="authcode:war">
+    <output-path>$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/authcode/target</output-path>
+    <root id="archive" name="authcode.war">
+      <element id="artifact" artifact-name="authcode:war exploded" />
+    </root>
+  </artifact>
+</component>

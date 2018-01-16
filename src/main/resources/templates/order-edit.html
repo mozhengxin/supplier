@@ -1,0 +1,164 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <title>供应商系统</title>
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"/>
+    <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <a onclick="history.go(-1)" class="button pull-left">返回</a>
+    </header>
+    <div class="content">
+        <div class="list-block">
+            <form action="/editOrder">
+                <input type="hidden" name="supplierId" th:value="${supplierId}">
+                <input type="hidden" name="id" th:value="${order.id}">
+                <input type="hidden" name="batchId" th:value="${order.batchId}">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">款号</div>
+                                <div class="item-input">
+                                    <input name="style" th:value="${order.style}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">颜色</div>
+                                <div class="item-input">
+                                    <input id="color" name="color" placeholder="裁数" th:value="${order.color}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">码数</div>
+                                <div class="item-input">
+                                    <input id="size" name="size" placeholder="裁数" th:value="${order.size}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">裁数</div>
+                                <div class="item-input">
+                                    <input id="outCount" name="outCount" placeholder="裁数" th:value="${order.outCount}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">单价</div>
+                                <div class="item-input">
+                                    <input id="price" name="price" type="number" placeholder="单价" th:value="${order.price}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">订单日期</div>
+                                <div class="item-input">
+                                    <input id="orderDate" name="orderDate" type="date" placeholder="订单日期" th:value="${order.orderDate}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">交货日期</div>
+                                <div class="item-input">
+                                    <input id="deliveryDate" name="deliveryDate" type="date" placeholder="交货日期" th:value="${order.deliveryDate}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--<li>-->
+                        <!--<div class="item-content">-->
+                            <!--<div class="item-media"><i class="icon icon-form-calendar"></i></div>-->
+                            <!--<div class="item-inner">-->
+                                <!--<div class="item-title label">试版日期</div>-->
+                                <!--<div class="item-input">-->
+                                    <!--<input id="trialDate" name="trialDate" type="date" placeholder="试版日期">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </form>
+        </div>
+        <div class="content-block">
+            <div class="row">
+                <div class="col-100"><a id="submitBtn" class="button button-big button-fill button-success">提交</a></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bar bar-tab">
+        <a class="tab-item active" href="/view/supplier">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">供应商</span>
+        </a>
+        <a class="tab-item" href="/view/preOrder">
+            <span class="icon icon-card"></span>
+            <span class="tab-label">预订单</span>
+        </a>
+        <a class="tab-item" href="/view/record">
+            <span class="icon icon-message"></span>
+            <span class="tab-label">今日备注</span>
+        </a>
+        <a class="tab-item" href="/view/search">
+            <span class="icon icon-search"></span>
+            <span class="tab-label">搜索</span>
+        </a>
+        <a class="tab-item" href="/view/config">
+            <span class="icon icon-computer"></span>
+            <span class="tab-label">系统配置</span>
+        </a>
+    </nav>
+</div>
+</body>
+<script>
+    $("#submitBtn").on('click', function () {
+//        if ($("#price").val() == "") {
+//            $.toast("请填写单价!");
+//            return;
+//        }
+        if ($("#orderDate").val() == "") {
+            $.toast("请填写订单日期!");
+            return;
+        }
+        if ($("#outount").val() == "") {
+            $.toast("请填写裁数!");
+            return;
+        }
+        $('form').submit();
+    });
+</script>
+</html>

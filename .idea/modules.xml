@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/authcode/authcode.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/authcode/authcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/business/business.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/business/business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/car/car.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/car/car.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/coach/coach.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/coach/coach.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/common/common.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/datasynch/datasynch.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/datasynch/datasynch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/finance/finance.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/finance/finance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/flow/flow.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/flow/flow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/httpaccess/httpaccess.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/httpaccess/httpaccess.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/intapi/intapi.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/intapi/intapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/liliyun.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/liliyun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/logcommon/logcommon.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/logcommon/logcommon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/market/market.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/market/market.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/report/report.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/report/report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/student/student.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/student/student.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supplier.iml" filepath="$PROJECT_DIR$/supplier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/system/system.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/system/system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/trainorg/trainorg.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/trainorg/trainorg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/user/user.iml" filepath="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/user/user.iml" />
+    </modules>
+  </component>
+</project>

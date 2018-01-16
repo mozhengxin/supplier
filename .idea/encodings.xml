@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/authcode" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/business" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/car" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/coach" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/datasynch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/finance" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/flow" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/httpaccess" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/intapi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/logcommon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/market" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/report" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/student" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/system" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/trainorg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+  </component>
+</project>

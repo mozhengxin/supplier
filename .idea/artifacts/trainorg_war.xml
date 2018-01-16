@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="trainorg:war">
+    <output-path>$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/trainorg/target</output-path>
+    <root id="archive" name="trainorg.war">
+      <element id="artifact" artifact-name="trainorg:war exploded" />
+    </root>
+  </artifact>
+</component>

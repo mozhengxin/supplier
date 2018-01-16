@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <title>供应商系统</title>
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"/>
+    <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <h1 class="title">款号查询</h1>
+    </header>
+    <div class="content" style="margin-bottom: 30px;">
+        <div class="content-block" style="padding: 0 0rem">
+            <div class="tabs">
+                <div id="tab1" class="tab active">
+                    <form action="/view/searchOrderFinish" style="margin-top: -20px">
+                        <div class="row" >
+                            <div class="search-input col-25" style="margin-left: 40px;">
+                                <input type="search" id="search" name="search" placeholder="款号" th:value="${search}"/>
+                            </div>
+                            <div class="item-input col-20">
+                                <select name="size" id="size">
+                                    <option value="">全部</option>
+                                    <option th:each="item: ${sizes}" th:value="${item.name}"
+                                            th:text="${item.name}"></option>
+                                </select>
+                            </div>
+                            <div class="item-input col-20">
+                                <select name="brand" id="brand">
+                                    <option value="">全部</option>
+                                    <option value="Fx">Fx</option>
+                                    <option value="RMZ">RMZ</option>
+                                </select>
+                            </div>
+                            <button class="button button-fill button-primary col-20" style="margin-left: 30px;">搜索</button>
+                        </div>
+                    </form>
+                    <div class="list-block cards-list" style="margin-top: -8px;">
+                        <div style="text-align: center">已交数量:<span th:text="${finishCount}"></span>&nbsp;&nbsp;
+                            未交数量:<span th:text="${unfinishCount}"></span></div>
+                        <ul>
+                            <li class="card" th:each="item : ${list}" style="font-size: .75rem">
+                                    <div class="card-footer">
+                                        <div class="item-media">
+                                            <img th:src="${item.imgs}"
+                                                 style='width: 4.4rem;'>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                供应商:<label th:text="${item.name}"></label>
+                                                品牌:<label th:text="${item.brand}"></label>
+                                            </div>
+                                            <div>
+                                                款号:<label th:text="${item.style}"></label>
+                                                颜色:<label th:text="${item.color}"></label>
+                                                裁数:<label th:text="${item.outCount}"></label>
+                                            </div>
+                                            <div>
+                                                尺码:<label th:text="${item.size}"</label>
+                                                已交:<label th:text="${item.finishCount}"></label>
+                                                <span style="color: red">未交:<label th:text="${item.unfinishCount}"></label></span>
+                                            </div>
+                                            <div>
+                                                订单时间:<label th:text="${item.orderDate}"></label>
+                                                单价:<label th:text="${item.price}"></label>
+
+                                            </div>
+
+                                            <div>
+                                                交货时间:<label th:text="${item.deliveryDate}"></label>
+                                                今日跟踪:<label th:text="${item.hasRecord}"
+                                                            th:style="${item.hasRecord eq '是'} ? 'color:red' : ''"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bar bar-tab">
+        <a class="tab-item" href="/view/supplier">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">供应商</span>
+        </a>
+        <a class="tab-item" href="/view/preOrder">
+            <span class="icon icon-card"></span>
+            <span class="tab-label">预订单</span>
+        </a>
+        <a class="tab-item" href="/view/record">
+            <span class="icon icon-message"></span>
+            <span class="tab-label">今日备注</span>
+        </a>
+        <a class="tab-item active" href="/view/search">
+            <span class="icon icon-search"></span>
+            <span class="tab-label">搜索</span>
+        </a>
+        <a class="tab-item" href="/view/config">
+            <span class="icon icon-computer"></span>
+            <span class="tab-label">系统配置</span>
+        </a>
+    </nav>
+</div>
+<script th:inline="javascript">
+    if ([[${size}]] == null) {
+        $("#size").val("");
+    } else {
+        $("#size").val([[${size}]]);
+    }
+    if ([[${brand}]] == null) {
+        $("#brand").val("");
+    } else {
+        $("#brand").val([[${brand}]]);
+    }
+</script>
+</body>
+</html>

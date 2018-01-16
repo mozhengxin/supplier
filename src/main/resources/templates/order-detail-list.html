@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <title>供应商系统</title>
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"/>
+    <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <a th:href="@{/view/supplierOrder(supplierId=${supplierId})}" class="button pull-left">返回</a>
+        <a th:href="@{/view/addOrderDetail(orderId=${orderId},supplierId=${supplierId})}"
+           class="button pull-left">交货</a>
+        <h1 class="title">#<span th:text="${style}"></span>|<span th:text="${color}"></span>|<span
+                th:text="${size}"></span></h1>
+        <a class="button pull-right" onclick="deleteData()">删除</a>
+        <a th:href="@{/view/editOrder(orderId=${orderId},supplierId=${supplierId})}"
+           class="button pull-right">编辑</a>
+    </header>
+    <!-- 这里是页面内容区 -->
+    <div class="content">
+        <div class="list-block contacts-block">
+            <div class="list-group">
+                <ul>
+                    <li th:each="item : ${list}">
+                        <a class="alert-text" th:onclick="'javascript:editData(\''+${item.id}+'\')'">
+                            <div class="item-content item-link">
+                                <div class="item-inner">
+                                    交货日期:
+                                    <div class="item-title" th:text="${item.deliveryDate}"></div>
+                                    交货数量:
+                                    <div class="item-title" th:text="${item.finishCount}"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bar bar-tab">
+        <a class="tab-item active" href="/view/supplier">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">供应商</span>
+        </a>
+        <a class="tab-item" href="/view/preOrder">
+            <span class="icon icon-card"></span>
+            <span class="tab-label">预订单</span>
+        </a>
+        <a class="tab-item" href="/view/record">
+            <span class="icon icon-message"></span>
+            <span class="tab-label">今日备注</span>
+        </a>
+        <a class="tab-item" href="/view/search">
+            <span class="icon icon-search"></span>
+            <span class="tab-label">搜索</span>
+        </a>
+        <a class="tab-item" href="/view/config">
+            <span class="icon icon-computer"></span>
+            <span class="tab-label">系统配置</span>
+        </a>
+    </nav>
+</div>
+
+</body>
+<script th:inline="javascript">
+    function editData(id) {
+        window.location.href = "/view/editOrderDetail?id=" + id +
+            "&orderId=" + [[${orderId}]] + "&supplierId=" + [[${supplierId}]];
+    }
+
+    function deleteData() {
+        if (confirm("确定删除订单?")) {
+            $.post("/deleteOrder", {orderId: [[${orderId}]]},
+                function (data) {
+                    window.location.href = "/view/supplierOrder?supplierId=" + [[${supplierId}]];
+                });
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,148 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <title>供应商系统</title>
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"/>
+    <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <a href="/view/preOrder" class="button pull-left">返回</a>
+        <h1 class="title">编辑预订单</h1>
+    </header>
+    <div class="content" style="margin-bottom: 50px;">
+        <div class="list-block">
+            <form action="/addPreOrder">
+                <input id="id" name="id" th:value="${preOrder.id}" type="hidden">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">日期</div>
+                                <div class="item-input">
+                                    <input id="ctime" name="ctime" th:value="${preOrder.ctime}" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">品牌</div>
+                                <div class="item-input">
+                                    <select name="brand" id="brand">
+                                        <option value="Fx">Fx</option>
+                                        <option value="RMZ">RMZ</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">款号</div>
+                                <div class="item-input">
+                                    <input name="style" id="style" type="text" placeholder="款号"
+                                           th:value="${preOrder.style}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">数量</div>
+                                <div class="item-input">
+                                    <input id="num" name="num" type="number" placeholder="数量"
+                                           th:value="${preOrder.num}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">颜色</div>
+                                <div class="item-input">
+                                    <select name="color" id="color">
+                                        <option th:each="item: ${colors}" th:value="${item.name}"
+                                                th:text="${item.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="content-block">
+            <div class="row">
+                <div class="col-100"><a id="submitBtn" class="button button-big button-fill button-success">提交</a></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bar bar-tab">
+        <a class="tab-item" href="/view/supplier">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">供应商</span>
+        </a>
+        <a class="tab-item active" href="/view/preOrder">
+            <span class="icon icon-card"></span>
+            <span class="tab-label">预订单</span>
+        </a>
+        <a class="tab-item" href="/view/record">
+            <span class="icon icon-message"></span>
+            <span class="tab-label">今日备注</span>
+        </a>
+        <a class="tab-item" href="/view/search">
+            <span class="icon icon-search"></span>
+            <span class="tab-label">搜索</span>
+        </a>
+        <a class="tab-item" href="/view/config">
+            <span class="icon icon-computer"></span>
+            <span class="tab-label">系统配置</span>
+        </a>
+    </nav>
+</div>
+</body>
+
+
+<script th:inline="javascript">
+    if ([[${preOrder.color}]] == null) {
+        $("#color").val("");
+    } else {
+        $("#color").val([[${preOrder.color}]]);
+    }
+    if ([[${preOrder.brand}]] == null) {
+        $("#brand").val("");
+    } else {
+        $("#brand").val([[${preOrder.brand}]]);
+    }
+
+    $("#submitBtn").on('click', function () {
+        if ($("#style").val() == "") {
+            $.toast("请填写款号!");
+            return;
+        }
+        if ($("#num").val() == "") {
+            $.toast("请填写数量!");
+            return;
+        }
+        $('form').submit();
+    });
+</script>
+<
+/html>

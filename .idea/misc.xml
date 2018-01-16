@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/authcode" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/business" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/car" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/coach" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/datasynch" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/finance" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/httpaccess" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/market" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/report" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/student" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/system" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/trainorg" />
+    <file type="web" url="file://$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/user" />
+    <type id="Spring" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

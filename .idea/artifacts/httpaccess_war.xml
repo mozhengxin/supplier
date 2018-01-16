@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="httpaccess:war">
+    <output-path>$PROJECT_DIR$/../clouddrive/liliyun/server/liliyun/httpaccess/target</output-path>
+    <root id="archive" name="httpaccess.war">
+      <element id="artifact" artifact-name="httpaccess:war exploded" />
+    </root>
+  </artifact>
+</component>
