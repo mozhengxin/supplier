@@ -71,7 +71,6 @@ public class SupplierService {
         return supplierDao.findOne(supplierId);
     }
 
-    @Transactional
     public void deleteOrderDetail(Integer id) {
         OrderDetail orderDetail = orderDetailDao.findOne(id);
         orderDetailDao.delete(id);
