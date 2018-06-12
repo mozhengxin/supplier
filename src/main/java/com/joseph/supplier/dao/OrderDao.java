@@ -1,6 +1,7 @@
 package com.joseph.supplier.dao;
 
 import com.joseph.supplier.model.Order;
+import com.joseph.supplier.model.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -56,5 +57,12 @@ public interface OrderDao extends JpaRepository<Order, Integer> {
 
     @Query(value = "select o from Order o where o.size = :size order by o.ctime desc")
     List<Order> listBySize(@Param("size") String size);
+
+    @Query(value = "select o from Order o where o.size = :size and o.batchId = :batchId")
+    Order getByBatchIdAndSize(@Param("size") String size, @Param("batchId") String batchId);
+
+    @Query(value="select 0 as id, o.order_date as orderDate, o.style as style, o.color as color, sum(o.out_count) as outCount from t_order o " +
+            "where o.supplier_id = :supplierId  group by o.order_date, o.style, o.color", nativeQuery = true)
+    List <Order> getSupplierOrderCountList(@Param("supplierId") int supplierId);
 
 }
