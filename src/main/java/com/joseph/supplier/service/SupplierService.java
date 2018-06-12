@@ -3,6 +3,7 @@ package com.joseph.supplier.service;
 import com.joseph.supplier.dao.*;
 import com.joseph.supplier.model.*;
 import com.joseph.supplier.util.ImageUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,6 +119,25 @@ public class SupplierService {
     public Order getOrderById(Integer id) {
         return orderDao.getOne(id);
     }
+
+    public List<Order> getSupplierCountList(int sid, String sdate, String edate) {
+        String sql = "select o.order_date, o.style as style, o.color as color, sum(o.out_count) as out_count, sum(o.finish_count) as finish_count " +
+                "from t_order o " +
+        "where o.supplier_id = " + sid +"  @sdate@  @edate@ group by o.order_date, o.style, " +
+                "o.color order by o.order_date desc";
+        if (StringUtils.isNotBlank(sdate)) {
+            sql = sql.replace("@sdate@", "and o.order_date >= '" + sdate + "'");
+        } else {
+            sql = sql.replace("@sdate@", "");
+        }
+        if (StringUtils.isNotBlank(edate)) {
+            sql = sql.replace("@edate@", "and o.order_date <= '" + edate + "'");
+        } else {
+            sql = sql.replace("@edate@", "");
+        }
+        return jdbcTemplate.query(sql, new OrderCountRowMapper());
+    }
+
 
     public List<Order> listOrders() {
         return orderDao.findAll();
@@ -282,6 +302,10 @@ public class SupplierService {
 
     public String hasRecordToday(String batchId) {
         return recordDao.hasRecordToday(batchId, getStartTime(), getEndTime()) > 0 ? "是" : "否";
+    }
+
+    public Order getByBatchIdAndSize(String batchId, String size) {
+        return orderDao.getByBatchIdAndSize(size, batchId);
     }
 
     private static Date getStartTime() {

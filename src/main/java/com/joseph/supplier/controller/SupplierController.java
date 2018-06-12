@@ -190,8 +190,85 @@ public class SupplierController {
         return "/order-add";
     }
 
+    @RequestMapping("/view/addBatchOrder")
+    public String viewAddBatchOrder(ModelMap modelMap, String name, Integer supplierId,String style, String color, Integer orderId, String batchId) {
+        List<Size> sizes = supplierService.listSizes();
+        modelMap.addAttribute("sizes", sizes);
+        modelMap.addAttribute("name", name);
+        modelMap.addAttribute("supplierId", supplierId);
+        modelMap.addAttribute("style", style);
+        modelMap.addAttribute("color", color);
+        modelMap.addAttribute("orderId", orderId);
+        modelMap.addAttribute("name", name);
+        modelMap.addAttribute("batchId", batchId);
+        return "/order-batch-add";
+    }
+
+
+    @RequestMapping("/addBatchOrder")
+    public String addBatchOrder(ModelMap modelMap, Integer supplierId, String deliveryDate,
+                                String style, String batchId, String name, SizeParam size, BindingResult bindingResult) {
+        Order order;
+        if (size.getS() != 0) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setDeliveryDate(deliveryDate);
+            order = supplierService.getByBatchIdAndSize(batchId, "S");
+            orderDetail.setOrderId(order.getId());
+            orderDetail.setSupplierId(supplierId);
+            orderDetail.setFinishCount(size.getS());
+            supplierService.saveOrderDetail(orderDetail);
+        }
+        if (size.getM() != 0) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setDeliveryDate(deliveryDate);
+            order = supplierService.getByBatchIdAndSize(batchId, "M");
+            orderDetail.setOrderId(order.getId());
+            orderDetail.setSupplierId(supplierId);
+            orderDetail.setFinishCount(size.getM());
+            supplierService.saveOrderDetail(orderDetail);
+        }
+        if (size.getL() != 0) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setDeliveryDate(deliveryDate);
+            order = supplierService.getByBatchIdAndSize(batchId, "L");
+            orderDetail.setOrderId(order.getId());
+            orderDetail.setSupplierId(supplierId);
+            orderDetail.setFinishCount(size.getL());
+            supplierService.saveOrderDetail(orderDetail);
+        }
+        if (size.getXL() != 0) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setDeliveryDate(deliveryDate);
+            order = supplierService.getByBatchIdAndSize(batchId, "XL");
+            orderDetail.setOrderId(order.getId());
+            orderDetail.setSupplierId(supplierId);
+            orderDetail.setFinishCount(size.getXL());
+            supplierService.saveOrderDetail(orderDetail);
+        }
+        if (size.getXXL() != 0) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setDeliveryDate(deliveryDate);
+            order = supplierService.getByBatchIdAndSize(batchId, "XXL");
+            orderDetail.setOrderId(order.getId());
+            orderDetail.setSupplierId(supplierId);
+            orderDetail.setFinishCount(size.getXXL());
+            supplierService.saveOrderDetail(orderDetail);
+        }
+        if (size.getXXXL() != 0) {
+            OrderDetail orderDetail = new OrderDetail();
+            orderDetail.setDeliveryDate(deliveryDate);
+            order = supplierService.getByBatchIdAndSize(batchId, "XXXL");
+            orderDetail.setOrderId(order.getId());
+            orderDetail.setSupplierId(supplierId);
+            orderDetail.setFinishCount(size.getXXXL());
+            supplierService.saveOrderDetail(orderDetail);
+        }
+        return "redirect:/view/orderList?supplierId=" + supplierId +"&style="
+                + style + "&batchId=" + batchId + "&name" + name;
+    }
+
     @RequestMapping("/view/orderList")
-    public String viewOrderList(ModelMap modelMap, String batchId, String name, Integer supplierId) {
+    public String viewOrderList(ModelMap modelMap, String batchId, String name, Integer supplierId, Integer orderId) {
         List<Order> list = supplierService.listByBatchId(batchId);
         for (Order o : list) {
             o.setImgs(ImageUtil.getIms(o.getStyle()));
@@ -204,6 +281,7 @@ public class SupplierController {
         modelMap.addAttribute("reclist", recList);
         modelMap.addAttribute("name", name);
         modelMap.addAttribute("supplierId", supplierId);
+        modelMap.addAttribute("orderId", orderId);
         if (list.size() > 0) {
             modelMap.addAttribute("style", list.get(0).getStyle());
         }
@@ -337,6 +415,30 @@ public class SupplierController {
         modelMap.addAttribute("list1", list1);
         modelMap.addAttribute("search", search);
         return "/pre-order-list1";
+    }
+
+    @RequestMapping("/view/orderCountList")
+    public String orderCountList(ModelMap modelMap, String sdate, String edate, int supplierId) {
+        List<Order> list = supplierService.getSupplierCountList(supplierId, sdate, edate);
+        Order sumOrder = new Order();
+        int sumCount = 0;
+        int sumFinishCount = 0;
+        for (Order o : list) {
+            sumCount += o.getOutCount();
+            sumFinishCount += o.getFinishCount();
+        }
+        sumOrder.setOutCount(sumCount);
+        sumOrder.setFinishCount(sumFinishCount);
+        sumOrder.setOrderDate("合计：");
+        sumOrder.setStyle("");
+        List <Order> list1 = new ArrayList<>();
+        list1.add(sumOrder);
+        list1.addAll(list);
+        modelMap.addAttribute("list", list1);
+        modelMap.addAttribute("supplierId", supplierId);
+        modelMap.addAttribute("sdate", sdate);
+        modelMap.addAttribute("edate", edate);
+        return "/supplier-order-count-list";
     }
 
     @RequestMapping("/view/addPreOrder")
