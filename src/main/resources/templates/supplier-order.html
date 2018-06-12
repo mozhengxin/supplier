@@ -14,6 +14,7 @@
 <div class="page">
     <header class="bar bar-nav">
         <a th:href="@{/view/supplier}" class="button pull-left">返回</a>
+        <a th:href="@{/view/orderCountList(supplierId=${supplierId})}" class="button pull-left">裁数信息</a>
         <h1 class="title" th:text="${name}"></h1>
         <a th:href="@{/view/addOrder(supplierId=${supplierId})}" class="button pull-right">添加信息</a>
     </header>

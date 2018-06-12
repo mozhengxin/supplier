@@ -16,6 +16,7 @@
         <a th:href="@{/view/supplierOrder(name=${name},supplierId=${supplierId})}" class="button pull-left">返回</a>
         <a class="button pull-left" onclick="deleteData()">删除</a>
         <h1 class="title" th:text="${name}"></h1>
+        <a th:href="@{/view/addBatchOrder(orderId=${orderId},batchId=${batchId},name=${name},supplierId=${supplierId},style=${style})}" class="button pull-right">批量交货</a>
         <a th:href="@{/view/addRecord(orderId=${orderId},batchId=${batchId},name=${name},supplierId=${supplierId},style=${style})}" class="button pull-right">备注</a>
     </header>
     <div class="content">
